@@ -1,14 +1,14 @@
 export const ex3 = () =>  { }
 class Electrodomestico{
 
-    precioBase : number;
-    color : string;
-    consumoEnergetico: string;
-    peso: number;
+    protected precioBase : number;
+    protected color : string;
+    protected consumoEnergetico: string;
+    protected peso: number;
 
     constructor(precioBase=100, color=color_defecto, consumoEnergetico=consumo_defecto, peso=5){
         this.precioBase = precioBase;
-        this.color = this.comprobarColor(color);
+        this.color = this.comprobarColor(color.toLowerCase());
         this.consumoEnergetico = this.comprobarConsumoEnergetico(consumoEnergetico);
         this.peso = peso;
     }
@@ -90,7 +90,7 @@ class Electrodomestico{
     }
 }
 
-const colores=['Blanco','Negro','Rojo','Azul','Gris'];
+const colores=['blanco','negro','rojo','azul','gris'];
 const consumo=['A','B','C','D','E','F'];
 const color_defecto = 'Blanco';
 const consumo_defecto = "F";
@@ -155,15 +155,15 @@ class mainApp{
     static run(){
         var electrodomesticos = new Array(10);
         electrodomesticos[0] = new Electrodomestico();
-        electrodomesticos[1] = new Electrodomestico();
-        electrodomesticos[2] = new Electrodomestico();
+        electrodomesticos[1] = new Electrodomestico(200, 'Rojo', 'B', 15);
+        electrodomesticos[2] = new Electrodomestico(320, 'AZUL', 'D', 70);
         electrodomesticos[3] = new Lavadora();
-        electrodomesticos[4] = new Lavadora();
-        electrodomesticos[5] = new Lavadora();
+        electrodomesticos[4] = new Lavadora(10);
+        electrodomesticos[5] = new Lavadora(40);
         electrodomesticos[6] = new Television();
-        electrodomesticos[7] = new Television();
-        electrodomesticos[8] = new Television();
-        electrodomesticos[9] = new Television();
+        electrodomesticos[7] = new Television(80, true);
+        electrodomesticos[8] = new Television(20, false);
+        electrodomesticos[9] = new Television(30);
 
         var precioTelevisores = 0;
         var precioLavadoras = 0;
